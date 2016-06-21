@@ -23,8 +23,8 @@ end
 
 #A method to introduce our list of students
 def print_header
-  puts "The students of Makers Academy"
-  puts "-------------"
+  puts "The students of Makers Academy".center(50)
+  puts "-----------------------------------------------------------"
 end
 
 #A method to print out the names of the students whose name is less than 12 chara
@@ -32,7 +32,7 @@ def print_students(students)
   index = 0
   while index < students.length
   students.each do |student|
-    puts "#{student[:name]} from #{student[:cohort]} cohort enjoys #{student[:hobbies]}."
+    puts "#{student[:name]} is from the #{student[:cohort]} cohort".center(50)
     index += 1
   end
 end
@@ -40,7 +40,8 @@ end
 
 #A method to show the overall number of students from the list
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "------------------------------------------------------------"
+  puts " Overall, we have #{students.count} great students"
 end
 
 students = input_students
