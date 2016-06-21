@@ -19,11 +19,13 @@ def print_header
   puts "-------------"
 end
 
-#A method to print out the names of the students whose name is less than 12 characcters
+#A method to print out the names of the students whose name is less than 12 chara
 def print_students(students)
+  index = 0
+  while index < students.length
   students.each do |student|
-    if student[:name].length < 12
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    index += 1
   end
 end
 end
