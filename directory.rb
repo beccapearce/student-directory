@@ -5,10 +5,12 @@ def input_students
   students = []
   #get the input of the name from the user
   name = gets.chomp
-  if !name.empty?
     puts "What cohort is #{name} in?"
     cohort = gets.chomp
-  end
+        while cohort.empty? == true
+      puts "Whoops, you need to enter #{name}'s cohort"
+      cohort = gets.chomp
+    end
   while !name.empty? do
     students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
@@ -16,6 +18,10 @@ def input_students
     if !name.empty?
       puts "What cohort is #{name} in?"
       cohort = gets.chomp
+      while cohort.empty? == true
+    puts "Whoops, you need to enter #{name}'s cohort"
+    cohort = gets.chomp
+  end
     end
   end
   students
