@@ -6,16 +6,16 @@ def input_students
   #get the input of the name from the user
   name = gets.chomp
   if !name.empty?
-    puts "What hobbies does #{name} have?"
-    hobbies = gets.chomp
+    puts "What cohort is #{name} in?"
+    cohort = gets.chomp
   end
   while !name.empty? do
-    students << {name: name, cohort: :July, hobbies: hobbies}
+    students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
     name = gets.chomp
     if !name.empty?
-      puts "What hobbies does #{name} have?"
-      hobbies = gets.chomp
+      puts "What cohort is #{name} in?"
+      cohort = gets.chomp
     end
   end
   students
