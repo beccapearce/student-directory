@@ -1,19 +1,35 @@
-student_count = 11
-
-#Printing off the students' names
+#Outline the names of the students
+students = [
+"Dr. Hannibal Lecter",
+"Darth Vader",
+"Nurse Ratched",
+"Michael Corleone",
+"ALex DeLarge",
+"The Wicked Witch of the West",
+"Terminator",
+"Freddy Kruger",
+"The Joker",
+"Joffrey Baratheon",
+"Norman Bates"
+]
+#A method to introduce our list of students
+def print_header
 puts "The students of Villains Academy"
 puts "-------------"
-puts "Dr. Hannibal Lecter"
-puts "Darth Vader"
-puts "Nurse Ratched"
-puts "Michael Corleone"
-puts "ALex DeLarge"
-puts "The Wicked Witch of the West"
-puts "Terminator"
-puts "Freddy Kruger"
-puts "The Joker"
-puts "Joffrey Baratheon"
-puts "Norman Bates"
+end
 
-#Show the overall number of students from the list
-print "Overall, we have #{student_count} great students"
+#A method to print out the names of the students
+def print_names(names)
+  names.each do |name|
+    puts name
+  end
+end
+
+#A method to show the overall number of students from the list
+def print_footer(names)
+  puts "Overall, we have #{names.count} great students"
+end
+
+print_header
+print_names(students)
+print_footer(students)
