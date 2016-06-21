@@ -20,9 +20,11 @@ def print_header
 end
 
 #A method to print out the names of the students
-def print_names(students)
-  students.each.with_index(1) do |student, index|
-    puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
+def print_students(students)
+  students.each do |student|
+    if student[:name].each_char.first == "T"
+      puts "#{student[:name]} (#{student[:cohort]} cohort)"
+   end
   end
 end
 
@@ -33,5 +35,5 @@ end
 
 students = input_students
 print_header
-print_names(students)
+print_students(students)
 print_footer(students)
