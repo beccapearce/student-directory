@@ -5,10 +5,18 @@ def input_students
   students = []
   #get the input of the name from the user
   name = gets.chomp
+  if !name.empty?
+    puts "What hobbies does #{name} have?"
+    hobbies = gets.chomp
+  end
   while !name.empty? do
-    students << {name: name, cohort: :July}
+    students << {name: name, cohort: :July, hobbies: hobbies}
     puts "Now we have #{students.count} students"
     name = gets.chomp
+    if !name.empty?
+      puts "What hobbies does #{name} have?"
+      hobbies = gets.chomp
+    end
   end
   students
 end
@@ -24,7 +32,7 @@ def print_students(students)
   index = 0
   while index < students.length
   students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    puts "#{student[:name]} from #{student[:cohort]} cohort enjoys #{student[:hobbies]}."
     index += 1
   end
 end
