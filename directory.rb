@@ -15,7 +15,12 @@ def input_students
     #continue asking for input until the user enters a blank (presses enter twice)
   while !name.empty?
     students << {name => cohort}
-    puts "Now we have #{students.count} students"
+    case
+    when students.count == 1
+        puts "Now we have #{students.count} student"
+      when students.count >= 2
+      puts "Now we have #{students.count} students"
+    end
     name = gets.chomp
     if !name.empty?
       puts "What cohort is #{name} in?"
@@ -34,7 +39,7 @@ end
 
 #A method to print out the names of the students in order of their cohorts
 def print_students(students)
-  students = students.sort_by{|hash| hash[name]}
+  students = students.sort_by{|hash| hash["name"]}
   students.each do |hash|
     hash.each do |name, cohort|
       puts "#{name} is in the #{cohort} cohort"
@@ -45,7 +50,11 @@ end
 #A method to show the overall number of students from the list
 def print_footer(student)
   puts "------------------------------------------------------------"
-  puts " Overall, we have #{student.count} great student(s)"
+  if student == 1
+    puts " Overall, we have #{student.count} great student"
+  else
+    puts " Overall, we have #{student.count} great students"
+  end
 end
 
 student_cohort_array_of_hashes = input_students
