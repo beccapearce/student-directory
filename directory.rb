@@ -1,3 +1,4 @@
+#a method to get the student names and cohort from the user
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
@@ -7,10 +8,9 @@ def input_students
   name = gets.chomp
     puts "What cohort is #{name} in?"
     cohort = gets.chomp
-        while cohort.empty? == true
-      puts "Whoops, you need to enter #{name}'s cohort"
-      cohort = gets.chomp
-    end
+    #Default to July if no cohort is entered
+    cohort = :July if cohort.empty?
+    #continue asking for input until the user enters a blank (presses enter twice)
   while !name.empty? do
     students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
@@ -18,10 +18,7 @@ def input_students
     if !name.empty?
       puts "What cohort is #{name} in?"
       cohort = gets.chomp
-      while cohort.empty? == true
-    puts "Whoops, you need to enter #{name}'s cohort"
-    cohort = gets.chomp
-  end
+      cohort = :July if cohort.empty?
     end
   end
   students
@@ -41,7 +38,7 @@ def print_students(students)
     puts "#{student[:name]} is from the #{student[:cohort]} cohort".center(50)
     index += 1
   end
-end
+  end
 end
 
 #A method to show the overall number of students from the list
