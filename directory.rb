@@ -1,3 +1,5 @@
+
+
 #a method to get the student names and cohort from the user
 def input_students
   puts "Please enter the names of the students"
@@ -8,17 +10,17 @@ def input_students
   name = gets.chomp
     puts "What cohort is #{name} in?"
     cohort = gets.chomp
-    #Default to July if no cohort is entered
-    cohort = :July if cohort.empty?
+    #Default to MysteryCohort if no cohort is entered
+    cohort = "Unknown cohort" if cohort.empty?
     #continue asking for input until the user enters a blank (presses enter twice)
-  while !name.empty? do
-    students << {name: name, cohort: cohort}
+  while !name.empty?
+    students << {name => cohort}
     puts "Now we have #{students.count} students"
     name = gets.chomp
     if !name.empty?
       puts "What cohort is #{name} in?"
       cohort = gets.chomp
-      cohort = :July if cohort.empty?
+      cohort = "Unknown cohort" if cohort.empty?
     end
   end
   students
@@ -30,24 +32,23 @@ def print_header
   puts "-----------------------------------------------------------"
 end
 
-#A method to print out the names of the students whose name is less than 12 chara
+#A method to print out the names of the students in order of their cohorts
 def print_students(students)
-  index = 0
-  while index < students.length
-  students.each do |student|
-    puts "#{student[:name]} is from the #{student[:cohort]} cohort".center(50)
-    index += 1
-  end
+  students = students.sort_by{|hash| hash[name]}
+  students.each do |hash|
+    hash.each do |name, cohort|
+      puts "#{name} is in the #{cohort} cohort"
+    end
   end
 end
 
 #A method to show the overall number of students from the list
-def print_footer(students)
+def print_footer(student)
   puts "------------------------------------------------------------"
-  puts " Overall, we have #{students.count} great students"
+  puts " Overall, we have #{student.count} great student(s)"
 end
 
-students = input_students
+student_cohort_array_of_hashes = input_students
 print_header
-print_students(students)
-print_footer(students)
+print_students(student_cohort_array_of_hashes)
+print_footer(student_cohort_array_of_hashes)
