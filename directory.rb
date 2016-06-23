@@ -7,9 +7,9 @@ def input_students
   #create an empty array in which to put the student names
   students = []
   #get the input of the name from the user
-  name = gets.chomp
+  name = gets.chomp.to_sym
     puts "What cohort is #{name} in?"
-    cohort = gets.chomp
+    cohort = gets.chomp.to_sym
     #Default to MysteryCohort if no cohort is entered
     cohort = "Unknown cohort" if cohort.empty?
     #continue asking for input until the user enters a blank (presses enter twice)
@@ -21,10 +21,10 @@ def input_students
       when students.count >= 2
       puts "Now we have #{students.count} students"
     end
-    name = gets.chomp
+    name = gets.chomp.to_sym
     if !name.empty?
       puts "What cohort is #{name} in?"
-      cohort = gets.chomp
+      cohort = gets.chomp.to_sym
       cohort = "Unknown cohort" if cohort.empty?
     end
   end
@@ -39,7 +39,7 @@ end
 
 #A method to print out the names of the students in order of their cohorts
 def print_students(students)
-  students = students.sort_by{|hash| hash["name"]}
+  students = students.sort_by{|hash| hash[:name]}
   students.each do |hash|
     hash.each do |name, cohort|
       puts "#{name} is in the #{cohort} cohort"
@@ -50,7 +50,7 @@ end
 #A method to show the overall number of students from the list
 def print_footer(student)
   puts "------------------------------------------------------------"
-  if student == 1
+  if student.count == 1
     puts " Overall, we have #{student.count} great student"
   else
     puts " Overall, we have #{student.count} great students"
@@ -58,6 +58,10 @@ def print_footer(student)
 end
 
 student_cohort_array_of_hashes = input_students
-print_header
-print_students(student_cohort_array_of_hashes)
-print_footer(student_cohort_array_of_hashes)
+if !student_cohort_array_of_hashes.empty?
+  print_header
+  print_students(student_cohort_array_of_hashes)
+  print_footer(student_cohort_array_of_hashes)
+else
+  puts "You have not entered any students"
+end
